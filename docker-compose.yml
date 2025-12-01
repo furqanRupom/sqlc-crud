@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  db: 
+    image: postgres:16
+    container_name: sqlcpostgres
+    environment:
+      POSTGRES_DB: sqlcdb
+      POSTGRES_USER: sqlc
+      POSTGRES_PASSWORD: sqlcpass
+    volumes:
+      - sqlc-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+volumes:
+  sqlc-data:
