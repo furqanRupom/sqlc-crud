@@ -5,8 +5,10 @@ import (
 	"github.com/go-chi/chi"
 )
 
-func UserRoutes(r chi.Router, h *handlers.UserHandler){
-   r.Post("/users",h.CreateUser)
-   r.Get("/users",h.GetUsers)
-   r.Get("/users/{id}",h.GetUser)
+func UserRoutes(r chi.Router, h *handlers.UserHandler) {
+	r.Post("/users", h.CreateUser)
+	r.Get("/users", h.GetUsers)
+	r.Get("/users/{id}", h.GetUser)
+	r.Put("/users/{id}", h.UpdateUser)
+	r.Delete("/users/{id}", h.DeleteUser)
 }

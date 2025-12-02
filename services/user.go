@@ -11,8 +11,8 @@ type UserService interface {
 	Create(ctx context.Context, user model.User) (*model.RUser, error)
 	Get(ctx context.Context, id string) (*model.RUser, error)
 	List(ctx context.Context) ([]*model.RUser, error)
-	Delete(ctx context.Context, id string) (*model.User, error)
-	Update(ctx context.Context, user model.RUser) (*model.User, error)
+	Delete(ctx context.Context, id string) error
+	Update(ctx context.Context, user model.RUser) (*model.RUser, error)
 }
 
 type userService struct {
@@ -32,9 +32,9 @@ func (s *userService) Get(ctx context.Context, id string) (*model.RUser, error) 
 func (s *userService) List(ctx context.Context) ([]*model.RUser, error){
 	return s.repo.List(ctx)
 }
-func (s *userService) Delete(ctx context.Context, id string) (*model.User, error){
+func (s *userService) Delete(ctx context.Context, id string)error{
 	return s.repo.Delete(ctx,id)
 }
-func (s *userService) Update(ctx context.Context, user model.RUser) (*model.User, error) {
+func (s *userService) Update(ctx context.Context, user model.RUser) (*model.RUser, error) {
 	return s.repo.Update(ctx,user)
 }
