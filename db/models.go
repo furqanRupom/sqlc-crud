@@ -4,6 +4,21 @@
 
 package db
 
+import (
+	"github.com/jackc/pgx/v5/pgtype"
+)
+
+type Opinion struct {
+	ID          int64
+	UserID      int64
+	SubjectType string
+	SubjectID   int64
+	Opinion     string
+	Rating      pgtype.Int4
+	CreatedAt   pgtype.Timestamp
+	UpdatedAt   pgtype.Timestamp
+}
+
 type User struct {
 	ID       int64
 	Name     string
